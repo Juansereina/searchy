@@ -6,27 +6,40 @@ export const searchSlice = createSlice({
   name: 'cards',
   initialState: {
     usuarios: {
-      index
+      index,
+      isLoading: false
     },
     fuentes: {
-      index
+      index,
+      isLoading: false
     },
     conciliaciones: {
-      index
+      index,
+      isLoading: false
     },
     tableros: {
-      index
+      index,
+      isLoading: false
     },
   },
   reducers: {
     changeIndex: (state, action)  => {
-      state.index= action.payload;
-    }
+      state[action.payload].index += 2;
+    },
+    loading: (state, action)  => {
+      state[action.payload].isLoading = !state[action.payload].isLoading;
+    },
   },
 });
 
-export const { searchResults } = searchSlice.actions;
+export const loadMore = (key) => dispatch => {
+  dispatch(loading(key));
+  setTimeout(() => {
+    dispatch(loading(key));
+    dispatch(changeIndex(key));
+  }, 1500);
+};
 
-export const selectCount = state => state.search?.result;
+export const { changeIndex, loading } = searchSlice.actions;
 
 export default searchSlice.reducer;
