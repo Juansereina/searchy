@@ -1,3 +1,4 @@
+import { isLast } from '../../utils';
 import './style.css';
 
 const renderUserCard = ({ name, age, gender, phone, email, address }) => {
@@ -16,11 +17,51 @@ const renderUserCard = ({ name, age, gender, phone, email, address }) => {
   );
 }
 
+const renderConciliationCard = ({ conciliationName, balance, timestamp, description}) => {
+  return (
+    <div className="coinciliation">
+      <div className="coinciliation__info">
+        <div><b>Conciliacion:</b> {conciliationName}</div>
+        <div><b>Balance:</b> {balance}</div>
+        <div><b>Fecha:</b> {timestamp.createdAt} - {timestamp.updateAt}</div>
+        <div><b>Descripción:</b> {description}</div>
+      </div>
+    </div>
+  );
+}
+
+const renderSourceCard = ({ company, timestamp, description}) => {
+  return (
+    <div className="source">
+      <div className="source__info">
+        <div><b>Empresa:</b> {company}</div>
+        <div><b>Fecha:</b> {timestamp.createdAt} - {timestamp.updateAt}</div>
+        <div><b>Descripción:</b> {description}</div>
+      </div>
+    </div>
+  );
+}
+
+const renderTableCard = ({ dashboardName, visualType, description, visuals, tags, timestamp}) => {
+  return (
+    <div className="table">
+      <div className="table__info">
+        <div><b>Nombre:</b> {dashboardName}</div>
+        <div><b>Tipo:</b> {visualType.map((v, index) => `${v.name}${!isLast(visualType, index) ? ', ' : ''} `)}</div>
+        <div><b>Fecha:</b> {timestamp.createdAt} - {timestamp.updateAt}</div>
+        <div><b>Descripción:</b> {description}</div>
+        <div><b>Visual:</b> {visuals.map((v, index)=> `[${v.name} - ${v.type}]${!isLast(visuals, index) ? ', ' : ''} `)}</div>
+        <div><b>Tags:</b> {tags.map((t, index )=> `${t}${!isLast(tags, index) ? ', ' : ''}`)}</div>
+      </div>
+    </div>
+  );
+}
+
 const selectType = {
   usuarios: renderUserCard,
-  conciliaciones: () => <span>concilicaiones</span>,
-  tableros: () => <span>tableros</span>,
-  fuentes: () => <span>fuentes</span>,
+  conciliaciones: renderConciliationCard,
+  tableros: renderTableCard,
+  fuentes: renderSourceCard,
 }
 
 const Card = ({ type, card }) => {

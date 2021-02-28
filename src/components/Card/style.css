@@ -1,22 +1,27 @@
 .user {
-  display: grid;
-  background-color: white;
-  color: var(--text-color);
   grid-template-columns: 100px 1fr;
-  padding: 10px;
-  border: 1px solid var(--border-color);
 }
 
 .user__info {
-  text-align: initial;
   margin-left: 10px;
   display: grid;
   gap: 5px;
 }
 
-.container__list li:last-child .user,
-.container__list li:last-child .fuentes,
-.container__list li:last-child .coinciliaciones,
-.container__list li:last-child .tableros {
-  border-radius: 0 0 10px 10px;
+.user,
+.coinciliation,
+.table,
+.source {
+  display: grid;
+  background-color: white;
+  color: var(--text-color);
+  padding: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.user__info,
+.coinciliation__info,
+.table__info,
+.source__info {
+  text-align: initial;
 }
