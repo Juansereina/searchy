@@ -1,3 +1,5 @@
+import { isArray, isNumber, isString, isObject } from '../utils';
+
 const files = [
   'usuarios',
   'conciliaciones',
@@ -21,37 +23,40 @@ export const getAlldata = async () => {
   }
 }
 
+const handleArrayOfString = (arr, query) => {
+  return arr.includes(query) || arr.some(item => {
+    if (!isArray(item)) {
+      const objectValues = Object.values(item);
+      return objectValues.includes(query);
+    }
+    return item.includes(query);
+  });
+};
+
 const lookForMatches = (query, arr) => {
   return arr.filter(item => {
-    let isMatch = false;
+    return Object.entries(item).some(([key, value]) => {
+      if (key === '_id') return false;
 
-    for (const [key, value] of Object.entries(item)) {
-      if (key === '_id') continue;
-
-      const isString = typeof value === 'string';
-      if(isString && value.includes(query)) {
-        isMatch = true
+      if(isString(value)) {
+        return value.includes(query);
       }
 
-      const isArray = Array.isArray(value);
-      if(isArray && value.includes(query)) {
-        isMatch = true
+      if(isArray(value)) {
+        return handleArrayOfString(value, query)
       }
 
-      const isNumber = typeof value === 'number'
-      if (isNumber && value == query) {
-        isMatch = true
+      if (isNumber(value)) {
+        return value == query;
       }
 
-      const isObject = typeof value === 'object'
-      if (isObject) {
+      if (isObject(value)) {
         const objectValues = Object.values(value);
-        if(objectValues.includes(query)) {
-          isMatch = true
-        }
+        return handleArrayOfString(objectValues, query);
       }
-    }
-    return isMatch;
+
+      return false;
+    })
   });
 }
 
