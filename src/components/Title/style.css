@@ -6,6 +6,8 @@
   text-transform: capitalize;
 }
 
+/* Mdule title color */
+
 .title--usuarios {
   background-color: var(--dark-blue-gray);
 }

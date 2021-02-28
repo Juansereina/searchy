@@ -1,3 +1,4 @@
+/* Global variables */
 :root {
   --dark-blue-gray: #666A86;
   --shadow-blue: #788AA3;
@@ -25,4 +26,8 @@ code {
 
 h1, h2, h3 {
   font-family: 'Roboto';
+}
+
+p {
+  margin: 0;
 }

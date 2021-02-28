@@ -1,7 +1,5 @@
 import './style.css';
 
-const Logo = () => {
-  return <h1 className="logo">Searchy</h1>
-}
+const Logo = () => <h1 className="logo">Searchy</h1>;
 
 export default Logo;

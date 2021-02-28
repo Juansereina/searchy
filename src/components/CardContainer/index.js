@@ -1,3 +1,4 @@
+
 import { useSelector, useDispatch } from 'react-redux';
 import Card from '../Card';
 import Title from '../Title';
@@ -11,13 +12,19 @@ const CardContainer = () => {
   const _modules = Object.entries(results);
   const dispatch = useDispatch();
 
-
+  /* Renders very module as a section and includes the controls to load more cards */
   const renderSections = () => _modules.map(([key, cards]) => {
     const config = cardsConfig[key];
     const noResults = cards.length === 0;
     const renderButtons = () => (
-      cardsConfig[key].isLoading ?
-      <Loader /> : <button onClick={() => dispatch(loadMore(key))} className="container__load-more">Cargar más</button>
+      <>
+        {cardsConfig[key].isLoading && <Loader />}
+        <button
+          onClick={() => dispatch(loadMore(key))}
+          /* keeps the focus in the element when using the tab button, but avoids clicking */
+          className={`container__load-more ${cardsConfig[key].isLoading ? 'container__load-more--hide' : ''}`}
+        >Cargar más</button>
+      </>
     );
 
     return (
@@ -31,7 +38,7 @@ const CardContainer = () => {
     )
   });
 
-  return <div className="cards">{renderSections()}</div>
+  return <main className="cards">{renderSections()}</main>
 }
 
 export default CardContainer;

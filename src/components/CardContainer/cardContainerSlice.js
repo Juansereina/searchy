@@ -1,22 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+/* Helpers for testing purposes */
 const index = 2;
+const isLoading = false;
+
 const initialState = {
   usuarios: {
     index,
-    isLoading: false
+    isLoading
   },
   fuentes: {
     index,
-    isLoading: false
+    isLoading
   },
   conciliaciones: {
     index,
-    isLoading: false
+    isLoading
   },
   tableros: {
     index,
-    isLoading: false
+    isLoading
   },
 }
 
@@ -34,6 +37,7 @@ export const searchSlice = createSlice({
   },
 });
 
+/* Changes the store to show the loader, then, increses the number of cards to be renders */
 export const loadMore = (key) => dispatch => {
   dispatch(loading(key));
   setTimeout(() => {

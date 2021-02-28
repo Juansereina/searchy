@@ -1,62 +1,69 @@
 import { isLast } from '../../utils';
 import './style.css';
 
+/* This component renders the structure of different type of cards, no contains business logic */
+
+/* Renders the structure for the user card */
 const renderUserCard = ({ name, age, gender, phone, email, address }) => {
   return (
     <div className="user">
       <img className="user__photo" src="https://picsum.photos/100/100" alt="user"/>
       <div className="user__info">
-        <div><b>Nombre:</b> {name.firstName}{name.lastName}</div>
-        <div><b>Edad:</b> {age}</div>
-        <div><b>Genero:</b> {gender}</div>
-        <div><b>Teléfono:</b> {phone}</div>
-        <div><b>Correo:</b> {email}</div>
-        <div><b>Dirección:</b> {address}</div>
+        <p><b>Nombre:</b> {name.firstName}{name.lastName}</p>
+        <p><b>Edad:</b> {age}</p>
+        <p><b>Genero:</b> {gender}</p>
+        <p><b>Teléfono:</b> {phone}</p>
+        <p><b>Correo:</b> {email}</p>
+        <p><b>Dirección:</b> {address}</p>
       </div>
     </div>
   );
 }
 
+/* Renders the structure for the coinciliation card */
 const renderConciliationCard = ({ conciliationName, balance, timestamp, description}) => {
   return (
     <div className="coinciliation">
       <div className="coinciliation__info">
-        <div><b>Conciliacion:</b> {conciliationName}</div>
-        <div><b>Balance:</b> {balance}</div>
-        <div><b>Fecha:</b> {timestamp.createdAt} - {timestamp.updateAt}</div>
-        <div><b>Descripción:</b> {description}</div>
+        <p><b>Conciliacion:</b> {conciliationName}</p>
+        <p><b>Balance:</b> {balance}</p>
+        <p><b>Fecha:</b> {timestamp.createdAt} - {timestamp.updateAt}</p>
+        <p><b>Descripción:</b> {description}</p>
       </div>
     </div>
   );
 }
 
+/* Renders the structure for the source card */
 const renderSourceCard = ({ company, timestamp, description}) => {
   return (
     <div className="source">
       <div className="source__info">
-        <div><b>Empresa:</b> {company}</div>
-        <div><b>Fecha:</b> {timestamp.createdAt} - {timestamp.updateAt}</div>
-        <div><b>Descripción:</b> {description}</div>
+        <p><b>Empresa:</b> {company}</p>
+        <p><b>Fecha:</b> {timestamp.createdAt} - {timestamp.updateAt}</p>
+        <p><b>Descripción:</b> {description}</p>
       </div>
     </div>
   );
 }
 
+/* Renders the structure for the table card */
 const renderTableCard = ({ dashboardName, visualType, description, visuals, tags, timestamp}) => {
   return (
     <div className="table">
       <div className="table__info">
-        <div><b>Nombre:</b> {dashboardName}</div>
-        <div><b>Tipo:</b> {visualType.map((v, index) => `${v.name}${!isLast(visualType, index) ? ', ' : ''} `)}</div>
-        <div><b>Fecha:</b> {timestamp.createdAt} - {timestamp.updateAt}</div>
-        <div><b>Descripción:</b> {description}</div>
-        <div><b>Visual:</b> {visuals.map((v, index)=> `[${v.name} - ${v.type}]${!isLast(visuals, index) ? ', ' : ''} `)}</div>
-        <div><b>Tags:</b> {tags.map((t, index )=> `${t}${!isLast(tags, index) ? ', ' : ''}`)}</div>
+        <p><b>Nombre:</b> {dashboardName}</p>
+        <p><b>Tipo:</b> {visualType.map((v, index) => `${v.name}${!isLast(visualType, index) ? ', ' : ''} `)}</p>
+        <p><b>Fecha:</b> {timestamp.createdAt} - {timestamp.updateAt}</p>
+        <p><b>Descripción:</b> {description}</p>
+        <p><b>Visual:</b> {visuals.map((v, index)=> `[${v.name} - ${v.type}]${!isLast(visuals, index) ? ', ' : ''} `)}</p>
+        <p><b>Tags:</b> {tags.map((t, index )=> `${t}${!isLast(tags, index) ? ', ' : ''}`)}</p>
       </div>
     </div>
   );
 }
 
+/* Type of cards */
 const selectType = {
   usuarios: renderUserCard,
   conciliaciones: renderConciliationCard,
@@ -64,6 +71,7 @@ const selectType = {
   fuentes: renderSourceCard,
 }
 
+/* Renders a card component */
 const Card = ({ type, card }) => {
   return <li>
     {selectType[type](card)}
