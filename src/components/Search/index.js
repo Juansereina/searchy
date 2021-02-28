@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSearch } from './hooks'
 
 import './style.css';
@@ -6,17 +6,35 @@ import './style.css';
 const Search = () => {
   const ref = useRef();
   const doSearch = useSearch();
+  const [activeClear, setActiveClear] = useState(false);
+  const handleChange = ({ target }) => setActiveClear(target.value.length > 0);
   const handleSearch = ({ keyCode }) => {
     /* Enter button */
     if(keyCode === 13) {
       doSearch(ref.current.value);
     }
   }
+  const handleClear = () => {
+    ref.current.value = '';
+    setActiveClear(false);
+  }
 
   /* Focus the search input as soon as the page loads */
   useEffect(() => ref.current.focus());
 
-  return <input onKeyUp={handleSearch} className="search" type="text" ref={ref} placeholder="Escribe algo, ejemplo: CooperGrant" />
+  return <div className="search">
+    <input
+      onChange={handleChange}
+      onKeyUp={handleSearch}
+      className="search__input"
+      type="text"
+      ref={ref}
+      placeholder="Escribe algo, ejemplo: CooperGrant" />
+    <span
+      className={`search__clear ${ activeClear ? 'search__clear--active' : ''}`}
+      onClick={handleClear}
+    >✕</span>
+  </div>
 }
 
 export default Search;
