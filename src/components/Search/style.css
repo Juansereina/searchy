@@ -7,4 +7,5 @@
   padding: 20px 0;
   text-indent: 10px;
   color: var(--text-color);
+  border: none;
 }

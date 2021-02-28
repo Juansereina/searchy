@@ -32,6 +32,9 @@
   font-family: 'Roboto';
 }
 
+.container__load-more:hover {
+  color: var(--hover-load-more);
+}
 
 .container__no-results,
 .container__load-more {
