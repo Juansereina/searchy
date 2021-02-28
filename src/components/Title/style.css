@@ -1,0 +1,22 @@
+.title {
+  margin: 0;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  color: white;
+}
+
+.title--usuarios {
+  background-color: var(--dark-blue-gray);
+}
+
+.title--fuentes {
+  background-color: var(--shadow-blue);
+}
+
+.title--conciliaciones {
+  background-color: var(--opal);
+}
+
+.title--tableros {
+  background-color: var(--laurel-green);
+}

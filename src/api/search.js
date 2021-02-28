@@ -47,6 +47,7 @@ const lookForMatches = (query, arr) => {
       }
 
       if (isNumber(value)) {
+        // eslint-disable-next-line eqeqeq
         return value == query;
       }
 

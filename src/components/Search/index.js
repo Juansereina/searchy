@@ -14,7 +14,7 @@ const Search = () => {
 
   useEffect(() => ref.current.focus());
 
-  return <input onKeyUp={handleSearch} className="search" type="text" ref={ref}/>
+  return <input onKeyUp={handleSearch} className="search" type="text" ref={ref} value="a"/>
 }
 
 export default Search;

@@ -1,5 +1,6 @@
 .search {
-  border-radius: .5rem;
-  width: 30rem;
-  height: 2rem;
+  max-width: 500px;
+  border-radius: 10px;
+  width: 95%;
+  height: 30px;
 }

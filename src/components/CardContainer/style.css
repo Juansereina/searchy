@@ -1,0 +1,23 @@
+.cards {
+  display: grid;
+  width: 95%;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.container {
+  display: grid;
+  width: 100%;
+  list-style-type: none;
+  background-color: white;
+  border-radius: 25px;
+  grid-template-rows: 50px 1fr;
+}
+
+.container__list {
+  list-style-type: none;
+  display: grid;
+  margin: 0;
+  padding: 0;
+}
