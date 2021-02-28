@@ -30,10 +30,10 @@ const Search = () => {
       type="text"
       ref={ref}
       placeholder="Escribe algo, ejemplo: CooperGrant" />
-    <span
+    <button
       className={`search__clear ${ activeClear ? 'search__clear--active' : ''}`}
       onClick={handleClear}
-    >✕</span>
+    >✕</button>
   </div>
 }
 

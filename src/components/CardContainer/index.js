@@ -29,7 +29,7 @@ const CardContainer = () => {
 
     return (
       <section key={key} className="container">
-        <Title title={key} />
+        <Title title={key} results={cards.length} />
         <ul className="container__list">
         {cards.map((card, index) => index < config.index && <Card key={card._id} type={key} card={card} />)}
         </ul>
