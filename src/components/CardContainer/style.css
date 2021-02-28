@@ -30,5 +30,10 @@
   background: white;
   font-size: 20px;
   font-family: 'Roboto';
+}
+
+
+.container__no-results,
+.container__load-more {
   color: var(--text-color);
 }
