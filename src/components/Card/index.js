@@ -4,7 +4,7 @@ import './style.css';
 /* This component renders the structure of different type of cards, no contains business logic */
 
 /* Renders the structure for the user card */
-const renderUserCard = ({ name, age, gender, phone, email, address }) => {
+const renderUserCard = ({ name, age, gender, phone, email, address, createdAt }) => {
   return (
     <div className="user">
       <img className="user__photo" src="https://picsum.photos/100/100" alt="user"/>
@@ -15,6 +15,7 @@ const renderUserCard = ({ name, age, gender, phone, email, address }) => {
         <p><b>Teléfono:</b> {phone}</p>
         <p><b>Correo:</b> {email}</p>
         <p><b>Dirección:</b> {address}</p>
+        <p><b>Fecha de creación:</b> {createdAt}</p>
       </div>
     </div>
   );

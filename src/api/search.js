@@ -25,7 +25,7 @@ export const getAlldata = async () => {
 
 const handleArrayOfString = (arr, query) => {
   return arr.includes(query) || arr.some(item => {
-    if (!isArray(item)) {
+    if (isObject(item)) {
       const objectValues = Object.values(item);
       return objectValues.includes(query);
     }
@@ -52,6 +52,10 @@ const lookForMatches = (query, arr) => {
       }
 
       if (isObject(value)) {
+/*         if(key === 'timestamp') {
+          console.log(value);
+        } */
+
         const objectValues = Object.values(value);
         return handleArrayOfString(objectValues, query);
       }
