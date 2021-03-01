@@ -1,6 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
-
-## Available Scripts
+# Available Scripts
 
 In the project directory, you can run:
 
@@ -9,60 +7,40 @@ In the project directory, you can run:
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Cuestionario
 
-### `npm run build`
+1. Por qué no debería usar la librería ​JQuery,​ ​si estoy usando ​ReactJS​?
+2. ¿Porque usarias ​Hooks d​e las nuevas versiones de ​ReactJS, ​en lugar de ​class component​?
+3. ¿Que es un archivo ​JSX?​
+4. ¿Que diferencia hay entre una ​function ​y una ​arrow function​ de Javascript?
+5. ¿Qué es ​Redux​ y​ cómo nos ayuda en los proyectos?
+6. ¿Por qué usuarios pruebas unitarias en tu código?
+7. ¿Que nos permite hacer la siguiente declaración?
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```js
+const ​anyFunction = (​param_1​) => (​param_2​) =>​ ​param_1 ​+​ ​param_2
+```
+## Respuestas
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Estas son ideas generales que tengo sobre estos conceptos sin guiarme mucho por lo que esta estrictamente escrito en la documentación por lo que pueden haber ciertas imprecisiones.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. JQuery es una librería pensada para facilitar el manejo del Dom entre otras cosas. React cumple la misma función y de una forma diferente ya que este último utiliza el virtual Dom mientras que jQuery el Dom por lo que no son "compatibles" porque no trabajan de la misma forma. Además, mucho de lo que hacía jQuery se puede hacer con vanilla javascript.
 
-### `npm run eject`
+2. Los hooks permiten simplificar la escritura de los componentes debido a que cambia el uso de lifecycle en clases a "funciones reutilizables". Los hooks permiten compartir lógica entre componentes de manera lateral y evitar wrapper over wrapper para poder pasar propiedades o lógica entre componentes.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. JSX es el sugar sintax que utiliza React para escribir componentes escribiendo HTML dentro de JavaScript.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. El problema que llega a resolver el arrow function es el contexto de una función, me explico, cuando se utiliza _function_ la palabra reservada _this_ no tiene acceso al scope general, únicamente el contexto dentro de la función. Arrow function permite que _this_ tenga acceso al contexto general sin necesita de hacer uso de _.bind()_
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+5. Es una librería que permite crear un Store global para una aplicación y de esta forma tener un source of truth centralizado. El objetivo es poder acceder a esta información desde cualquier lugar de la app y dar respuesta dinámicas a las interacciones de la app.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+6. Son el tipo de test con menor costo de mantener de la pirámide de test y ayudan a automatizar en un primer nivel muchas tareas repetitivas y reducen la probabilidad de añadir errores en una aplicación, además, de que sirven como guía para entender el funcionamiento del código ya que mientras casos de uso.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+7. Es una función "curry", se ejecutaría:
+```js
+​anyFunction(1)(2)
+// output: 3
+```
+Simplifica una función que recibe muchos parámetros de tal manera que una función con n parametros sea ejecutada n cantidad de veces. También, permite hacer invocaciones parciales de una función pero obteniendo un mismo resultado al final.
