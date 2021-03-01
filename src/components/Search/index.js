@@ -24,6 +24,7 @@ const Search = () => {
 
   return <div className="search">
     <input
+      data-testid="search"
       onChange={handleChange}
       onKeyUp={handleSearch}
       className="search__input"

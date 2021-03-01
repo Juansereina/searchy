@@ -52,10 +52,6 @@ const lookForMatches = (query, arr) => {
       }
 
       if (isObject(value)) {
-/*         if(key === 'timestamp') {
-          console.log(value);
-        } */
-
         const objectValues = Object.values(value);
         return handleArrayOfString(objectValues, query);
       }
